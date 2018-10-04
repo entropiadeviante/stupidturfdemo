@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="boxes.css">
+  </head>
+  <body>
+
+    <header>
+      <ul class="header-item control-panel">
+        <li class="panel-item">
+          <label class="panel-label" for="maxScreen">Set max width</label>
+          <input id="maxScreen" class="panel-value" type="number" step="10" name="maxScreen" min="0" value="600" placeholder="maxScreen" onchange="setWidth(event)">
+        </li>
+        <li class="float ratio-1-5 panel-item">
+          <input id="simulateMediaQuery" class="float" type="checkbox" name="simulateMediaQuery" value="enable" onchange="simulateMediaQuery(event)">
+          <label class="panel-label float" for="simulateMediaQuery">simulate media query</label>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <div id="mobile-box" class="box" data-width="600">
+        <ul class="list-of-items total-items2">
+          <li class="item ratio-1-2 transition">
+            Item 1 of 2
+          </li>
+          <li class="item ratio-1-2 transition">
+            Item 2 of 2
+          </li>
+        </ul>
+        <ul class="list-of-items total-items3">
+          <li class="item ratio-1-3 transition">
+            Item 1 of 3
+          </li>
+          <li class="item ratio-1-3 transition">
+            Item 2 of 3
+          </li>
+          <li class="item ratio-1-3 transition">
+            Item 3 of 3
+          </li>
+        </ul>
+        <ul class="list-of-items total-items4">
+          <li class="item ratio-1-4 transition">
+            Item 1 of 4
+          </li>
+          <li class="item ratio-1-4 transition">
+            Item 2 of 4
+          </li>
+          <li class="item ratio-1-4 transition">
+            Item 3 of 4
+          </li>
+          <li class="item ratio-1-4 transition">
+            Item 4 of 4
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="boxes.js"></script>
+  </body>
+</html>
