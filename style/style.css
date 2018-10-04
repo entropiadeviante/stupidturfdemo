@@ -68,7 +68,7 @@ body {
 }
 .sign,
 .breakpoint {
-  border: 1px dashed #000;
+  border-left: 1px dashed #000;
   height: calc(100vh - 90px);
   position: absolute;
   top: -2px;
@@ -85,6 +85,115 @@ body {
   border-color: #b00;
   color: #b00;
   top: 30px;
+}
+
+.breakpoint.used::after {
+  color: black;
+  height: 30px;
+  position: absolute;
+  right: auto;
+  width: 100%;
+  z-index: 2;
+}
+
+.breakpoint.used:nth-child(1)::after{
+  top: 0;
+  background: rgba(187, 0, 0, .5);
+}
+
+.breakpoint.used:nth-child(2)::after{
+  top: 40px;
+  background: rgba(0, 0, 255, .5);
+}
+
+.breakpoint.used:nth-child(3)::after{
+  top: 80px;
+  background: rgba(238, 130, 238, .5);
+}
+
+.breakpoint.used:nth-child(4)::after{
+  top: 120px;
+  background: rgba(205, 92, 92, .5);
+}
+
+.breakpoint.used:nth-child(5)::after{
+  top: 160px;
+  background: rgba(46, 139, 37, .5);
+}
+
+.breakpoint.used:nth-child(6)::after{
+  top: 200px;
+  background: rgba(173, 45, 32 , .5);
+}
+
+.breakpoint.used:nth-child(7)::after{
+  top: 240px;
+  background: rgba(322, 122, 2 , .5);
+}
+
+.breakpoint.used:nth-child(8)::after{
+  top: 280px;
+  background: rgba(187, 0, 0, .5);
+}
+
+.breakpoint.used:nth-child(9)::after{
+  top: 320px;
+  background: rgba(0, 0, 255, .5);
+}
+
+.breakpoint.used:nth-child(10)::after{
+  top: 360px;
+  background: rgba(238, 130, 238, .5);
+}
+
+.breakpoint.used:nth-child(11)::after{
+  top: 400px;
+  background: rgba(205, 92, 92, .5);
+}
+
+.breakpoint.used:nth-child(12)::after{
+  top: 440px;
+  background: rgba(46, 139, 37, .5);
+}
+
+.breakpoint.used:nth-child(13)::after{
+  top: 480px;
+  background: rgba(173, 45, 32 , .5);
+}
+
+.breakpoint.used:nth-child(14)::after {
+  top: 520px;
+  background: rgba(322, 122, 2 , .5);
+}
+
+.breakpoint.used:nth-child(15)::after{
+  top: 560px;
+  background: rgba(187, 0, 0, .5);
+}
+
+.breakpoint.used:nth-child(16)::after{
+  top: 600px;
+  background: rgba(0, 0, 255, .5);
+}
+
+.breakpoint.used:nth-child(17)::after{
+  top: 640px;
+  background: rgba(238, 130, 238, .5);
+}
+
+.breakpoint.used:nth-child(18)::after{
+  top: 680px;
+  background: rgba(205, 92, 92, .5);
+}
+
+.breakpoint.used:nth-child(19)::after{
+  top: 720px;
+  background: rgba(46, 139, 37, .5);
+}
+
+.breakpoint.used:nth-child(20)::after{
+  top: 760px;
+  background: rgba(173, 45, 32 , .5);
 }
 
 .screen:nth-child(1) {
@@ -145,9 +254,11 @@ body {
 .screen > span {
   left: 0;
   margin-top: -12px;
+  pointer-events: none;
   position: absolute;
   text-align: center;
   top: 50%;
+  user-select: none;
   width: 100%;
 }
 .screen.mobile {
