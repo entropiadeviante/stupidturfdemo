@@ -381,6 +381,7 @@ body {
     opacity: 0;
     overflow: hidden;
     padding: 10px;
+    pointer-events: none;
     position: absolute;
     right: 100%;
     text-align: left;
