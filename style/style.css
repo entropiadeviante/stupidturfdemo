@@ -473,6 +473,10 @@ footer,
     color: #b00;
 }
 
+#toggleBreaks + label {
+  color: #fff;
+}
+
 .panel .panel-item {
     text-align: left;
 }
