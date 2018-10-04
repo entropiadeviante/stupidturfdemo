@@ -120,140 +120,139 @@ body {
     z-index: 2;
 }
 
-.breakpoint:nth-child(1)::before {
-    top: 40px;
-}
-
-.breakpoint:nth-child(2)::before {
-    top: 80px;
-}
-
-.breakpoint:nth-child(3)::before {
-    top: 120px;
-}
-
-.breakpoint:nth-child(4)::before {
-    top: 160px;
-}
-
-.breakpoint.used:nth-child(1)::before,
-.breakpoint.used:nth-child(1)::after {
+.breakpoint:nth-child(1)::before,
+.breakpoint:nth-child(1)::after {
     top: 0;
     background: rgba(187, 0, 0, .5);
 }
 
-.breakpoint.used:nth-child(2)::before,
-.breakpoint.used:nth-child(2)::after {
+.breakpoint:nth-child(2)::before,
+.breakpoint:nth-child(2)::after {
     top: 40px;
     background: rgba(0, 0, 255, .5);
 }
 
-.breakpoint.used:nth-child(3)::before,
-.breakpoint.used:nth-child(3)::after {
+.breakpoint:nth-child(3)::before,
+.breakpoint:nth-child(3)::after {
     top: 80px;
     background: rgba(238, 130, 238, .5);
 }
 
-.breakpoint.used:nth-child(4)::before,
-.breakpoint.used:nth-child(4)::after {
+.breakpoint:nth-child(4)::before,
+.breakpoint:nth-child(4)::after {
     top: 120px;
     background: rgba(205, 92, 92, .5);
 }
 
-.breakpoint.used:nth-child(5)::before,
-.breakpoint.used:nth-child(5)::after {
+.breakpoint:nth-child(5)::before,
+.breakpoint:nth-child(5)::after {
     top: 160px;
     background: rgba(46, 139, 37, .5);
 }
 
-.breakpoint.used:nth-child(6)::before,
-.breakpoint.used:nth-child(6)::after {
+.breakpoint:nth-child(6)::before,
+.breakpoint:nth-child(6)::after {
     top: 200px;
     background: rgba(173, 45, 32, .5);
 }
 
-.breakpoint.used:nth-child(7)::before,
-.breakpoint.used:nth-child(7)::after {
+.breakpoint:nth-child(7)::before,
+.breakpoint:nth-child(7)::after {
     top: 240px;
     background: rgba(322, 122, 2, .5);
 }
 
-.breakpoint.used:nth-child(8)::before,
-.breakpoint.used:nth-child(8)::after {
+.breakpoint:nth-child(8)::before,
+.breakpoint:nth-child(8)::after {
     top: 280px;
     background: rgba(187, 0, 0, .5);
 }
 
-.breakpoint.used:nth-child(9)::before,
-.breakpoint.used:nth-child(9)::after {
+.breakpoint:nth-child(9)::before,
+.breakpoint:nth-child(9)::after {
     top: 320px;
     background: rgba(0, 0, 255, .5);
 }
 
-.breakpoint.used:nth-child(10)::before,
-.breakpoint.used:nth-child(10)::after {
+.breakpoint:nth-child(10)::before,
+.breakpoint:nth-child(10)::after {
     top: 360px;
     background: rgba(238, 130, 238, .5);
 }
 
-.breakpoint.used:nth-child(11)::before,
-.breakpoint.used:nth-child(11)::after {
+.breakpoint:nth-child(11)::before,
+.breakpoint:nth-child(11)::after {
     top: 400px;
     background: rgba(205, 92, 92, .5);
 }
 
-.breakpoint.used:nth-child(12)::before,
-.breakpoint.used:nth-child(12)::after {
+.breakpoint:nth-child(12)::before,
+.breakpoint:nth-child(12)::after {
     top: 440px;
     background: rgba(46, 139, 37, .5);
 }
 
-.breakpoint.used:nth-child(13)::before,
-.breakpoint.used:nth-child(13)::after {
+.breakpoint:nth-child(13)::before,
+.breakpoint:nth-child(13)::after {
     top: 480px;
     background: rgba(173, 45, 32, .5);
 }
 
-.breakpoint.used:nth-child(14)::before,
-.breakpoint.used:nth-child(14)::after {
+.breakpoint:nth-child(14)::before,
+.breakpoint:nth-child(14)::after {
     top: 520px;
     background: rgba(322, 122, 2, .5);
 }
 
-.breakpoint.used:nth-child(15)::before,
-.breakpoint.used:nth-child(15)::after {
+.breakpoint:nth-child(15)::before,
+.breakpoint:nth-child(15)::after {
     top: 560px;
     background: rgba(187, 0, 0, .5);
 }
 
-.breakpoint.used:nth-child(16)::before,
-.breakpoint.used:nth-child(16)::after {
+.breakpoint:nth-child(16)::before,
+.breakpoint:nth-child(16)::after {
     top: 600px;
     background: rgba(0, 0, 255, .5);
 }
 
-.breakpoint.used:nth-child(17)::before,
-.breakpoint.used:nth-child(17)::after {
+.breakpoint:nth-child(17)::before,
+.breakpoint:nth-child(17)::after {
     top: 640px;
     background: rgba(238, 130, 238, .5);
 }
 
-.breakpoint.used:nth-child(18)::before,
-.breakpoint.used:nth-child(18)::after {
+.breakpoint:nth-child(18)::before,
+.breakpoint:nth-child(18)::after {
     top: 680px;
     background: rgba(205, 92, 92, .5);
 }
 
-.breakpoint.used:nth-child(19)::before,
-.breakpoint.used:nth-child(19)::after {
+.breakpoint:nth-child(19)::before,
+.breakpoint:nth-child(19)::after {
     top: 720px;
     background: rgba(46, 139, 37, .5);
 }
 
-.breakpoint.used:nth-child(20)::before,
-.breakpoint.used:nth-child(20)::after {
+.breakpoint:nth-child(20)::before,
+.breakpoint:nth-child(20)::after {
     top: 760px;
     background: rgba(173, 45, 32, .5);
+}
+
+.breakpoint.set1::before,
+.breakpoint.set1::after{
+    background: fuchsia;
+}
+
+.breakpoint.set2::before,
+.breakpoint.set2::after{
+    background: fuchsia;
+}
+
+.breakpoint.set3::before,
+.breakpoint.set3::after{
+    background: fuchsia;
 }
 
 .screen:nth-child(1) {
@@ -484,4 +483,9 @@ footer,
 
 .panel .panel-label {
     display: block;
+    cursor: pointer;
+}
+
+.panel .panel-label:hover {
+     text-decoration: underline;
 }

@@ -138,9 +138,28 @@ var enableUsedBkp = function (e) {
 
 var toggleBreaks = function (e) {
   if (e.target.checked) {
+    toggleSet({target: {value: 1, checked: false}})
+    toggleSet({target: {value: 2, checked: false}})
+    toggleSet({target: {value: 3, checked: false}})
     document.getElementById('base-breakpoints').setAttribute('class', 'opacity-none')
   } else {
+    toggleSet({target: {value: 1, checked: true}})
+    toggleSet({target: {value: 2, checked: true}})
+    toggleSet({target: {value: 3, checked: true}})
     document.getElementById('base-breakpoints').setAttribute('class', '')
+  }
+}
+
+var toggleSet = function (e) {
+  var v = 'set' + e.target.value
+  var els = document.getElementsByClassName(v)
+  for (var el of els) {
+    console.log(el)
+    if (e.target.checked) {
+      el.classList.remove('opacity-none')
+    } else {
+      el.classList.add('opacity-none')
+    }
   }
 }
 

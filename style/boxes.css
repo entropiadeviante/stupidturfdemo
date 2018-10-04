@@ -35,7 +35,7 @@ ul, li {
 }
 .list-of-items {
   display: inline-block;
-  margin: 10px 0px;
+  margin: 10px 0;
   overflow: hidden;
   width: 100%;
 }
