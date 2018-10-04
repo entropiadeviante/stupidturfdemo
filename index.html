@@ -9,19 +9,38 @@
     <main>
       <div id="rule" class="rule">
         <div id="main-sign" class="sign" data-length='10'></div>
+<<<<<<< HEAD
         <div class="breakpoint" data-val="660">660</div>
         <div class="breakpoint" data-val="980">980</div>
         <div class="breakpoint" data-val="1200">1200</div>
         <div class="breakpoint" data-val="1600">1600</div>
+=======
+
+        <div id="base-breakpoints">
+          <div class="breakpoint" data-val="0" data-direction="over" data-end="660">0-660</div>
+          <div class="breakpoint" data-val="661" data-direction="over" data-end="980">661-980</div>
+          <div class="breakpoint" data-val="981" data-direction="over" data-end="1200">981-1200</div>
+          <div class="breakpoint" data-val="1201" data-direction="over" data-end="1600">1201-1600</div>
+        </div>
+>>>>>>> 3b8953ef2b2097202f9857fca016232dd4f08c87
 
         <div id="used-breakpoints" class="opacity-none">
-          <div class="breakpoint used" data-val="375">375</div>
-          <div class="breakpoint used" data-val="660">660</div>
-          <div class="breakpoint used" data-val="768">768</div>
-          <div class="breakpoint used" data-val="980">980</div>
-          <div class="breakpoint used" data-val="1200">1200</div>
-          <div class="breakpoint used" data-val="1299">1299</div>
-          <div class="breakpoint used" data-val="1600">1600</div>
+          <div class="breakpoint used" data-val="375" data-direction="over">375</div>
+          <div class="breakpoint used" data-val="460" data-direction="under">460</div>
+          <div class="breakpoint used" data-val="640" data-direction="under">640</div>
+          <div class="breakpoint used" data-val="659" data-direction="both">659</div>
+          <div class="breakpoint used" data-val="660" data-direction="both">660</div>
+          <div class="breakpoint used" data-val="670" data-direction="under">670</div>
+          <div class="breakpoint used" data-val="767" data-direction="under">767</div>
+          <div class="breakpoint used" data-val="768" data-direction="both">768</div>
+          <div class="breakpoint used" data-val="788" data-direction="under">788</div>
+          <div class="breakpoint used" data-val="980" data-direction="both">980</div>
+          <div class="breakpoint used" data-val="1023" data-direction="under">1023</div>
+          <div class="breakpoint used" data-val="1024" data-direction="over">1024</div>
+          <div class="breakpoint used" data-val="1200" data-direction="under">1200</div>
+          <div class="breakpoint used" data-val="1230" data-direction="under">1230</div>
+          <div class="breakpoint used" data-val="1299" data-direction="under">1299</div>
+          <div class="breakpoint used" data-val="1600" data-direction="under">1600</div>
         </div>
       </div>
 
@@ -112,6 +131,10 @@
             <label class="panel-label float" for="enableUsedBkp">used breakpoints</label>
           </li>
           <li class="float ratio-1-5 panel-item">
+            <input id="toggleBreaks" class="float" type="checkbox" name="toggleBreaks" value="enable" onchange="toggleBreaks(event)">
+            <label class="panel-label float" for="toggleBreaks">EXP-311 breakpoints</label>
+          </li>
+          <li class="float ratio-1-5 panel-item">
             <label class="panel-label" for="maxScreen">Set max resolution</label>
             <input id="maxScreen" class="panel-value" type="number" step="200" name="maxScreen" value="2400" placeholder="maxScreen" onchange="setMaxResolution(event)">
           </li>
@@ -130,3 +153,7 @@
     </script>
   </body>
 </html>
+
+
+
+
