@@ -9,7 +9,6 @@
 <main>
     <div id="rule" class="rule">
         <div id="main-sign" class="sign" data-length='10'></div>
-
         <div id="base-breakpoints">
             <div class="breakpoint set1" data-val="0" data-direction="over" data-end="660">0-660</div>
             <div class="breakpoint set1" data-val="661" data-direction="over" data-end="980">661-980</div>
@@ -241,6 +240,7 @@
             <div class="button" onClick="changeView(event, 4)">Smart TVs</div>
         </div>
         <ul class="footer-item float panel">
+<<<<<<< HEAD
             <li class="float ratio-1-5 panel-item">
                 <input id="enableUsedBkp" class="hide" type="checkbox" name="enableUsedBkp" value="enable"
                        onchange="enableUsedBkp(event)">
@@ -282,6 +282,29 @@
             <li class="float ratio-2-5 panel-item">
                 <span>source:<br> <a href="" id="data-source" class="nowrap" target="_blank"></a></span>
             </li>
+=======
+          <li class="float ratio-1-5 panel-item">
+            <div class="float ratio-1-1">
+              <input id="enableUsedBkp" class="float" type="checkbox" name="enableUsedBkp" value="enable" onchange="enableUsedBkp(event)">
+              <label class="panel-label float" for="enableUsedBkp">used breakpoints</label>
+            </div>
+            <div class="float ratio-1-1">
+              <input id="toggleBreaks" class="float" type="checkbox" name="toggleBreaks" value="enable" onchange="toggleBreaks(event)">
+              <label class="panel-label float" for="toggleBreaks">EXP-311 breakpoints</label>
+            </div>
+          </li>
+          <li class="float ratio-1-5 panel-item">
+            <label class="panel-label" for="maxScreen">Set max resolution</label>
+            <input id="maxScreen" class="panel-value" type="number" step="200" name="maxScreen" value="2400" placeholder="maxScreen" onchange="setMaxResolution(event)">
+          </li>
+          <li class="float ratio-1-5 panel-item">
+            <label class="panel-label" for="ruleSteps">Set rule intervals</label>
+            <input id="ruleSteps" class="panel-value" type="number" step="1" name="ruleSteps" value="10" placeholder="rule step" onchange="setRuleInterval(event)">
+          </li>
+          <li class="float ratio-2-5 panel-item">
+            <span>source:<br> <a href="" id="data-source" class="nowrap" target="_blank"></a></span>
+          </li>
+>>>>>>> e88e2502202d9f00ebea6fa2249860a4368ab6ad
         </ul>
     </footer>
 </main>
@@ -290,7 +313,3 @@
 </script>
 </body>
 </html>
-
-
-
-

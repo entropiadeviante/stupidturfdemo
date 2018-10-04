@@ -12,6 +12,11 @@ ul, li {
   list-style: none;
 }
 
+header {
+  margin: 0 auto;
+  max-width: 250px;
+}
+
 .transition {
   transition: all 0.4s ease-in-out;
 }
@@ -28,15 +33,26 @@ ul, li {
 }
 
 .box {
-  overflow: hidden;
+  background-color: rgba(151,220,255,0.47);
+  border: 1px dashed #555;
+  margin: 0 auto;
+  overflow: visible;
+  position: relative;
 }
-[data-width = "600"] {
-  width: 600px;
+[data-width = "660"] {
+  width: 660px;
+}
+[data-width = "660"]::after {
+  content: "660px";
+  position: absolute;
+  right: -15px;
+  top: -18px;
 }
 .list-of-items {
   display: inline-block;
   margin: 10px 0;
   overflow: hidden;
+  padding: 0 15px;
   width: 100%;
 }
 .item {

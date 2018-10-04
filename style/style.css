@@ -380,6 +380,7 @@ body {
     opacity: 0;
     overflow: hidden;
     padding: 10px;
+    pointer-events: none;
     position: absolute;
     right: 100%;
     text-align: left;
@@ -469,6 +470,10 @@ footer,
 
 #enableUsedBkp + label {
     color: #b00;
+}
+
+#toggleBreaks + label {
+  color: #fff;
 }
 
 .panel .panel-item {
