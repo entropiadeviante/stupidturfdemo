@@ -14,26 +14,46 @@ var screens = document.getElementsByClassName('screen')
   , h
 
 
-var ditrectionStyle = function (direction, left) {
+var ditrectionStyle = function (direction, left, end) {
   var styleElem = document.head.appendChild(document.createElement('style'))
-  var d = direction === 'under' ? 'left: -100%; content: \'under ' + left + ' px\';' : 'left: 0; content: \'over ' + left + ' px\';'
-  styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"].used:after {'
-    + d + '"}'
+
+  if(end) {
+    styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"]:before {left: 0px; width: ' + (end - left) * screenW / maxScreen + 'px; content: \'from ' + left + 'px to ' + end + ' px\';}'
+    return
+  }
+
+  if(direction === 'over'){
+    styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"]:after {left: 0; content: \'over ' + left + ' px\';}'
+    return
+  }
+
+  if(direction === 'under'){
+    styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"]:before {left: -' + left * screenW / maxScreen + 'px; width: ' + left * screenW / maxScreen + 'px; content: \'under ' + left + ' px\';}'
+    return
+  }
+
+  if(direction === 'both'){
+    styleElem.innerHTML = '' +
+      '[data-val="' + left + '"][data-direction="' + direction + '"]:after {left: 0; content: \'over ' + left + ' px\';}' +
+      '[data-val="' + left + '"][data-direction="' + direction + '"]:before {left: -' + left * screenW / maxScreen + 'px; width: ' + left * screenW / maxScreen + 'px; content: \'under ' + left + ' px\';}'
+    return
+  }
+
 }
 
-var ditrectionWidth = function (elem, direction, left) {
-  elem.style.width = direction === 'under' ? left * screenW / maxScreen + 'px' : '100%'
+var ditrectionWidth = function (elem, direction, left, end) {
+  elem.style.width = direction === 'under' || end ? left * screenW / maxScreen + 'px' : '100%'
 }
 
 var drawBreakpoints = function () {
   for (var elem of breakpoints) {
     var left = elem.getAttribute('data-val')
     var direction = elem.getAttribute('data-direction')
+    var end = elem.getAttribute('data-end')
     elem.style.left = left * screenW / maxScreen + 'px'
-    console.log(elem)
     if (direction) {
-      ditrectionWidth(elem, direction, left)
-      ditrectionStyle(direction, left)
+      ditrectionWidth(elem, direction, left, end)
+      ditrectionStyle(direction, left, end)
     }
   }
 }
@@ -113,6 +133,14 @@ var enableUsedBkp = function (e) {
     document.getElementById('used-breakpoints').setAttribute('class', '')
   } else {
     document.getElementById('used-breakpoints').setAttribute('class', 'opacity-none')
+  }
+}
+
+var toggleBreaks = function (e) {
+  if (e.target.checked) {
+    document.getElementById('base-breakpoints').setAttribute('class', 'opacity-none')
+  } else {
+    document.getElementById('base-breakpoints').setAttribute('class', '')
   }
 }
 
