@@ -1,61 +1,113 @@
-var screens = document.getElementsByClassName('screen')
-  , screensContainer = document.getElementsByClassName('screens-container')
-  , breakpoints = document.getElementsByClassName('breakpoint')
-  , signs = document.getElementsByClassName('sign')
-  , signsLength
-  , maxScreen
-  , minScreen
-  , scaleFactor
+var breakpoints = document.getElementsByClassName('js-set')
+  , breakpointsUsed = document.getElementsByClassName('js-used')
   , dataSource
-  , screenH
-  , screenW
-  , ind
-  , w
   , h
+  , ind
+  , maxScreen
+  , maxScreenElement = document.getElementById('maxScreen')
+  , minScreen
+  , rulerStyles = document.getElementById('rulers')
+  , scaleFactor
+  , screenH
+  , screens = document.getElementsByClassName('js-screen')
+  , screensContainer = document.getElementsByClassName('js-screens-container')
+  , screensControls = document.getElementsByClassName('js-screens-controls')
+  , screenW
+  , signs = document.getElementsByClassName('js-sign')
+  , signsLength
+  , source = document.getElementById('data-source')
+  , styles = ''
+  , w
 
-
-var ditrectionStyle = function (direction, left, end) {
-  var styleElem = document.head.appendChild(document.createElement('style'))
-
-  if(end) {
-    styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"]:before {left: 0px; width: ' + (end - left) * screenW / maxScreen + 'px; content: \'from ' + left + 'px to ' + end + ' px\';}'
-    return
-  }
-
-  if(direction === 'over'){
-    styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"]:after {left: 0; content: \'over ' + left + ' px\';}'
-    return
-  }
-
-  if(direction === 'under'){
-    styleElem.innerHTML = '[data-val="' + left + '"][data-direction="' + direction + '"]:before {left: -' + left * screenW / maxScreen + 'px; width: ' + left * screenW / maxScreen + 'px; content: \'under ' + left + ' px\';}'
-    return
-  }
-
-  if(direction === 'both'){
-    styleElem.innerHTML = '' +
-      '[data-val="' + left + '"][data-direction="' + direction + '"]:after {left: 0; content: \'over ' + left + ' px\';}' +
-      '[data-val="' + left + '"][data-direction="' + direction + '"]:before {left: -' + left * screenW / maxScreen + 'px; width: ' + left * screenW / maxScreen + 'px; content: \'under ' + left + ' px\';}'
-    return
-  }
-
+var lockStyle = function (direction, left, spacer, set) {
+  var w = Math.round((direction - left) * screenW / maxScreen)
+  return '.' +
+    set +
+    '[data-val="' + left + '"]' +
+    '[data-direction="' + direction + '"]:before {' +
+    'left: 0;' +
+    ' width: ' + w + 'px;' +
+    ' content: \'' + left + ' to ' + direction + '\';' +
+    ' top: ' + spacer + 'px;' +
+    '}'
 }
 
-var ditrectionWidth = function (elem, direction, left, end) {
-  elem.style.width = direction === 'under' || end ? left * screenW / maxScreen + 'px' : '100%'
+var overStyle = function (direction, left, spacer, set) {
+  var w = Math.round(left * screenW / maxScreen)
+  return '.' +
+    set +
+    '[data-val="' + left + '"]' +
+    '[data-direction="' + direction + '"]:after {' +
+    'left: 0;' +
+    ' width: calc( 100vw - ' + w + 'px);' +
+    ' content: \'over ' + left + '\';' +
+    ' top: ' + spacer + 'px;' +
+    '}'
 }
 
-var drawBreakpoints = function () {
-  for (var elem of breakpoints) {
+var underStyle = function (direction, left, spacer, set) {
+  var w = Math.round(left * screenW / maxScreen)
+  return '.' +
+    set +
+    '[data-val="' + left + '"]' +
+    '[data-direction="' + direction + '"]:before {' +
+    'left: -' + w + 'px;' +
+    ' width: ' + w + 'px;' +
+    ' content: \'under ' + left + '\';' +
+    ' top: ' + spacer + 'px;' +
+    '}'
+}
+
+var ditrectionStyle = function (direction, left, key, classes) {
+  var spacer = Number(key) * 40 + 40
+
+  if (direction === 'over') {
+    styles += overStyle(direction, left, spacer, classes)
+    return
+  }
+
+  if (direction === 'under') {
+    styles += underStyle(direction, left, spacer, classes)
+    return
+  }
+
+  if (direction === 'both') {
+    styles += underStyle(direction, left, spacer, classes) + overStyle(direction, left, spacer, classes)
+    return
+  }
+
+  styles += lockStyle(direction, left, spacer, classes)
+}
+
+var drawBreakpoints = function (bk) {
+  Object.keys(bk).map(function (key) {
+    var elem = bk[key]
     var left = elem.getAttribute('data-val')
+    var classes = elem.classList
+
+    var set = Object.keys(classes).map(
+      function (key) {
+        return classes[key]
+      }
+    ).filter(
+      function (css) {
+        return css !== 'breakpoint' && !css.includes('js-')
+      }
+    )
+
     var direction = elem.getAttribute('data-direction')
-    var end = elem.getAttribute('data-end')
     elem.style.left = left * screenW / maxScreen + 'px'
     if (direction) {
-      ditrectionWidth(elem, direction, left, end)
-      ditrectionStyle(direction, left, end)
+      ditrectionStyle(direction, left, key, set)
     }
-  }
+  })
+}
+
+var drawRulers = function () {
+  drawBreakpoints(breakpointsUsed)
+  drawBreakpoints(breakpoints)
+  rulerStyles.innerHTML = styles
+  styles = ""
 }
 
 var drawSigns = function () {
@@ -85,8 +137,7 @@ var drawScreens = function () {
 }
 
 var setSourceLink = function () {
-  document.getElementById('data-source').innerHTML = dataSource
-  document.getElementById('data-source').setAttribute('href', dataSource)
+  source.setAttribute('href', dataSource)
 }
 
 var init = function (args) {
@@ -96,7 +147,7 @@ var init = function (args) {
   scaleFactor = args.scaleFactor ? args.scaleFactor : document.getElementsByClassName('active')[0].getAttribute('data-scale')
   dataSource = args.dataSource ? args.dataSource : document.getElementsByClassName('active')[0].getAttribute('data-source')
   signsLength = args.signsLength ? args.signsLength : signs[0].getAttribute('data-length')
-  drawBreakpoints()
+  drawRulers()
   drawScreens()
   setSourceLink()
   drawSigns()
@@ -106,18 +157,32 @@ var resetRule = function () {
   document.getElementById('added-signs').remove()
 }
 
-var changeView = function (e, viewNumber) {
-  document.getElementsByClassName('active')[0].setAttribute('class', 'screens-container')
-  document.getElementsByClassName('selected')[0].setAttribute('class', 'button')
-  e.target.setAttribute('class', 'button selected')
-  screensContainer[viewNumber - 1].setAttribute('class', 'screens-container active')
-  document.getElementById('maxScreen').setAttribute('value', document.getElementsByClassName('active')[0].getAttribute('data-max-screen'))
-  document.getElementById('maxScreen').value = screensContainer[viewNumber - 1].getAttribute('data-max-screen')
+var changeView = function (e) {
+  var target = e.target.getAttribute('data-target')
+  var max = screensContainer[target].getAttribute('data-max-screen')
+
+  Object.keys(screensContainer).map(function (key) {
+    screensContainer[key].classList.remove('active')
+  })
+
+  Object.keys(screensControls).map(function (key) {
+    screensControls[key].classList.remove('selected')
+  })
+
+  screensContainer[target].classList.add('active')
+  screensControls[target].classList.add('selected')
+
+  maxScreenElement.setAttribute('value', max)
+
   resetRule()
+
   init({})
 }
 
 var flipDevice = function (e) {
+  if (e.target.classList.contains('desktop')) {
+    return
+  }
   var flipText = e.target.firstElementChild.innerText
   flipText = flipText.split(' x ')
   e.target.firstElementChild.innerText = flipText[1] + ' x ' + flipText[0]
@@ -126,41 +191,6 @@ var flipDevice = function (e) {
   e.target.setAttribute('data-width', h)
   e.target.setAttribute('data-height', w)
   drawScreens()
-}
-
-var enableUsedBkp = function (e) {
-  if (e.target.checked) {
-    document.getElementById('used-breakpoints').setAttribute('class', '')
-  } else {
-    document.getElementById('used-breakpoints').setAttribute('class', 'opacity-none')
-  }
-}
-
-var toggleBreaks = function (e) {
-  if (e.target.checked) {
-    toggleSet({target: {value: 1, checked: false}})
-    toggleSet({target: {value: 2, checked: false}})
-    toggleSet({target: {value: 3, checked: false}})
-    document.getElementById('base-breakpoints').setAttribute('class', 'opacity-none')
-  } else {
-    toggleSet({target: {value: 1, checked: true}})
-    toggleSet({target: {value: 2, checked: true}})
-    toggleSet({target: {value: 3, checked: true}})
-    document.getElementById('base-breakpoints').setAttribute('class', '')
-  }
-}
-
-var toggleSet = function (e) {
-  var v = 'set' + e.target.value
-  var els = document.getElementsByClassName(v)
-  for (var el of els) {
-    console.log(el)
-    if (e.target.checked) {
-      el.classList.remove('opacity-none')
-    } else {
-      el.classList.add('opacity-none')
-    }
-  }
 }
 
 var setMaxResolution = function (e) {

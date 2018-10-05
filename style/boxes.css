@@ -27,6 +27,7 @@ header {
 .panel-item {
   margin-bottom: 10px;
   font-size: 15px;
+  flex: 1 1 auto;
 }
 .panel-item input {
   font-size: 15px;

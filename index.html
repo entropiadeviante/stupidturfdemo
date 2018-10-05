@@ -4,284 +4,306 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="style/style.css">
+    <style id="rulers"></style>
 </head>
 <body>
 <main>
+    <input id="enableUsedBkp" class="hide" type="checkbox" name="enableUsedBkp" value="enable"/>
+    <input id="toggleBreaks" class="hide" type="checkbox" name="toggleBreaks" value="enable" checked="checked"/>
+    <input id="toggleSet3" class="hide" type="checkbox" name="toggleBreaks" value="3" checked="checked"/>
+    <input id="toggleSet1" class="hide" type="checkbox" name="toggleBreaks" value="1" checked="checked"/>
+    <input id="toggleSet2" class="hide" type="checkbox" name="toggleBreaks" value="2" checked="checked"/>
     <div id="rule" class="rule">
-        <div id="main-sign" class="sign" data-length='10'></div>
-        <div id="base-breakpoints">
-            <div class="breakpoint set1" data-val="0" data-direction="over" data-end="660">0-660</div>
-            <div class="breakpoint set1" data-val="661" data-direction="over" data-end="980">661-980</div>
-            <div class="breakpoint set1" data-val="981" data-direction="over" data-end="1200">981-1200</div>
-            <div class="breakpoint set1" data-val="1201" data-direction="over" data-end="1600">1201-1600</div>
-            <div class="breakpoint set1" data-val="1601" data-direction="over">1601</div>
+        <div id="main-sign" class="sign js-sign" data-length='10'></div>
 
-            <div class="breakpoint set2" data-val="0" data-direction="over">0</div>
-            <div class="breakpoint set2" data-val="661" data-direction="over">661</div>
-            <div class="breakpoint set2" data-val="981" data-direction="over">981</div>
-            <div class="breakpoint set2" data-val="1201" data-direction="over">1201</div>
-            <div class="breakpoint set2" data-val="1601" data-direction="over">1601</div>
-
-            <div class="breakpoint set3" data-val="660" data-direction="under">660</div>
-            <div class="breakpoint set3" data-val="980" data-direction="under">980</div>
-            <div class="breakpoint set3" data-val="1200" data-direction="under">1200</div>
-            <div class="breakpoint set3" data-val="1600" data-direction="under">1201-1600</div>
-            <div class="breakpoint set3" data-val="0" data-direction="over">0</div>
+        <div class="base-breakpoints">
+            <div class="breakpoint set2 js-set" data-val="0" data-direction="over">
+                <span class="marker">0</span>
+            </div>
+            <div class="breakpoint set2 js-set" data-val="661" data-direction="over">
+                <span class="marker">661</span>
+            </div>
+            <div class="breakpoint set2 js-set" data-val="981" data-direction="over">
+                <span class="marker">981</span>
+            </div>
+            <div class="breakpoint set2 js-set" data-val="1201" data-direction="over">
+                <span class="marker">1201</span>
+            </div>
+            <div class="breakpoint set2 js-set" data-val="1601" data-direction="over">
+                <span class="marker">1601</span>
+            </div>
         </div>
 
-        <div id="used-breakpoints" class="opacity-none">
-            <div class="breakpoint used" data-val="375" data-direction="over">375</div>
-            <div class="breakpoint used" data-val="460" data-direction="under">460</div>
-            <div class="breakpoint used" data-val="640" data-direction="under">640</div>
-            <div class="breakpoint used" data-val="659" data-direction="both">659</div>
-            <div class="breakpoint used" data-val="660" data-direction="both">660</div>
-            <div class="breakpoint used" data-val="670" data-direction="under">670</div>
-            <div class="breakpoint used" data-val="767" data-direction="under">767</div>
-            <div class="breakpoint used" data-val="768" data-direction="both">768</div>
-            <div class="breakpoint used" data-val="788" data-direction="under">788</div>
-            <div class="breakpoint used" data-val="980" data-direction="both">980</div>
-            <div class="breakpoint used" data-val="1023" data-direction="under">1023</div>
-            <div class="breakpoint used" data-val="1024" data-direction="over">1024</div>
-            <div class="breakpoint used" data-val="1200" data-direction="under">1200</div>
-            <div class="breakpoint used" data-val="1230" data-direction="under">1230</div>
-            <div class="breakpoint used" data-val="1299" data-direction="under">1299</div>
-            <div class="breakpoint used" data-val="1600" data-direction="under">1600</div>
+        <div class="base-breakpoints">
+            <div class="breakpoint set3 js-set" data-val="0" data-direction="over"></div>
+            <div class="breakpoint set3 js-set" data-val="660" data-direction="under"></div>
+            <div class="breakpoint set3 js-set" data-val="980" data-direction="under"></div>
+            <div class="breakpoint set3 js-set" data-val="1200" data-direction="under"></div>
+            <div class="breakpoint set3 js-set" data-val="1600" data-direction="under"></div>
+        </div>
+
+        <div class="base-breakpoints">
+            <div class="breakpoint set1 js-set" data-val="0" data-direction="660"></div>
+            <div class="breakpoint set1 js-set" data-val="661" data-direction="980"></div>
+            <div class="breakpoint set1 js-set" data-val="981" data-direction="1200"></div>
+            <div class="breakpoint set1 js-set" data-val="1201" data-direction="1600"></div>
+            <div class="breakpoint set1 js-set" data-val="1601" data-direction="over"></div>
+        </div>
+
+        <div id="used-breakpoints">
+            <div class="breakpoint js-used used" data-val="375" data-direction="over">
+                <span class="marker">375</span></div>
+            <div class="breakpoint js-used used" data-val="460" data-direction="under">
+                <span class="marker">460</span></div>
+            <div class="breakpoint js-used used" data-val="640" data-direction="under">
+                <span class="marker">640</span></div>
+            <div class="breakpoint js-used used" data-val="659" data-direction="both">
+                <span class="marker">659</span></div>
+            <div class="breakpoint js-used used" data-val="660" data-direction="both">
+                <span class="marker">660</span></div>
+            <div class="breakpoint js-used used" data-val="670" data-direction="under">
+                <span class="marker">670</span></div>
+            <div class="breakpoint js-used used" data-val="767" data-direction="under">
+                <span class="marker">767</span></div>
+            <div class="breakpoint js-used used" data-val="768" data-direction="both">
+                <span class="marker">768</span></div>
+            <div class="breakpoint js-used used" data-val="788" data-direction="under">
+                <span class="marker">788</span></div>
+            <div class="breakpoint js-used used" data-val="980" data-direction="both">
+                <span class="marker">980</span></div>
+            <div class="breakpoint js-used used" data-val="1023" data-direction="under">
+                <span class="marker">1023</span></div>
+            <div class="breakpoint js-used used" data-val="1024" data-direction="over">
+                <span class="marker">1024</span></div>
+            <div class="breakpoint js-used used" data-val="1200" data-direction="under">
+                <span class="marker">1200</span></div>
+            <div class="breakpoint js-used used" data-val="1230" data-direction="under">
+                <span class="marker">1230</span></div>
+            <div class="breakpoint js-used used" data-val="1299" data-direction="under">
+                <span class="marker">1299</span></div>
+            <div class="breakpoint js-used used" data-val="1600" data-direction="under">
+                <span class="marker">1600</span></div>
         </div>
     </div>
 
-    <div id="view1" class="screens-container active" data-source="https://www.w3counter.com/globalstats.php"
+    <div id="view1" class="js-screens-container screens-container active" data-source="https://www.w3counter.com/globalstats.php"
          data-max-screen=2400 data-scale=7>
-        <div class="screen mobile" data-width="360" data-height="640" onClick="flipDevice(event)"><span>360 x 640</span>
+        <div class="js-screen screen  mobile" data-width="360" data-height="640" onClick="flipDevice(event)"><span>360 x 640</span>
             <small class="tooltip"><b>29.05%</b><br>Samsung Galaxy S7/Edge</small>
         </div>
-        <div class="screen desktop" data-width="1366" data-height="768" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="1366" data-height="768" onClick="flipDevice(event)">
             <span>1366 x 768</span>
             <small class="tooltip"><b>10.65%</b></small>
         </div>
-        <div class="screen desktop" data-width="1920" data-height="1080" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="1920" data-height="1080" onClick="flipDevice(event)">
             <span>1920 x 1080</span>
             <small class="tooltip"><b>5.68%</b></small>
         </div>
-        <div class="screen tablet" data-width="1024" data-height="768" onClick="flipDevice(event)">
+        <div class="js-screen screen tablet" data-width="1024" data-height="768" onClick="flipDevice(event)">
             <span>1024 x 768</span>
             <small class="tooltip"><b>6.31%</b><br>iPad Mini/Mini2, iPad Air 1/2, iPad III/IV, Nexus 9</small>
         </div>
-        <div class="screen mobile" data-width="375" data-height="667" onClick="flipDevice(event)"><span>375 x 667</span>
+        <div class="js-screen screen mobile" data-width="375" data-height="667" onClick="flipDevice(event)"><span>375 x 667</span>
             <small class="tooltip"><b>5.66%</b><br>iPhone 6/7/8</small>
         </div>
-        <div class="screen mobile" data-width="414" data-height="736" onClick="flipDevice(event)"><span>414 x 736</span>
+        <div class="js-screen screen mobile" data-width="414" data-height="736" onClick="flipDevice(event)"><span>414 x 736</span>
             <small class="tooltip"><b>2.36%</b><br>iPhone 6+/6S+/7+/8+</small>
         </div>
-        <div class="screen desktop" data-width="1440" data-height="900" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="1440" data-height="900" onClick="flipDevice(event)">
             <span>1440 x 900</span>
             <small class="tooltip"><b>2.22%</b></small>
         </div>
-        <div class="screen desktop" data-width="1600" data-height="900" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="1600" data-height="900" onClick="flipDevice(event)">
             <span>1600 x 900</span>
             <small class="tooltip"><b>2.43%</b></small>
         </div>
-        <div class="screen mobile" data-width="412" data-height="732" onClick="flipDevice(event)"><span>412 x 732</span>
+        <div class="js-screen screen mobile" data-width="412" data-height="732" onClick="flipDevice(event)"><span>412 x 732</span>
             <small class="tooltip"><b>2.18%</b><br>Galaxy Tab 10</small>
         </div>
-        <div class="screen mobile" data-width="320" data-height="568" onClick="flipDevice(event)"><span>320 x 568</span>
+        <div class="js-screen screen mobile" data-width="320" data-height="568" onClick="flipDevice(event)"><span>320 x 568</span>
             <small class="tooltip"><b>2.20%</b><br>iPhone 5, iPod Touch</small>
-        </div>
-        <div class="legend">
-            <span class="legend-data phone">mobile</span>
-            <span class="legend-data tablet">tablet</span>
-            <span class="legend-data desktop">desktop</span>
         </div>
     </div>
 
-    <div id="view2" class="screens-container"
+    <div id="view2" class="js-screens-container screens-container"
          data-source="http://gs.statcounter.com/screen-resolution-stats/mobile/worldwide" data-max-screen=3260
          data-scale=11>
-        <div class="screen" data-width="1334" data-height="750" onClick="flipDevice(event)"><span>1334 x 750</span>
+        <div class="js-screen screen desktop" data-width="1334" data-height="750" onClick="flipDevice(event)"><span>1334 x 750</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen desktop" data-width="1920" data-height="1080" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="1920" data-height="1080" onClick="flipDevice(event)">
             <span>1920 x 1080</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen desktop" data-width="2560" data-height="1440" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="2560" data-height="1440" onClick="flipDevice(event)">
             <span>2560 x 1440</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen" data-width="1280" data-height="720" onClick="flipDevice(event)"><span>1280 x 720</span>
+        <div class="js-screen screen tablet" data-width="1280" data-height="720" onClick="flipDevice(event)"><span>1280 x 720</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen desktop" data-width="2960" data-height="1440" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="2960" data-height="1440" onClick="flipDevice(event)">
             <span>2960 x 1440</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen" data-width="1136" data-height="640" onClick="flipDevice(event)"><span>1136 x 640</span>
+        <div class="js-screen screen tablet" data-width="1136" data-height="640" onClick="flipDevice(event)"><span>1136 x 640</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen desktop" data-width="2436" data-height="1125" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="2436" data-height="1125" onClick="flipDevice(event)">
             <span>2436 x 1125</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen" data-width="854" data-height="480" onClick="flipDevice(event)"><span>854 x 480</span>
+        <div class="js-screen screen mobile" data-width="854" data-height="480" onClick="flipDevice(event)"><span>854 x 480</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen" data-width="960" data-height="540" onClick="flipDevice(event)"><span>960 x 540</span>
+        <div class="js-screen screen mobile" data-width="960" data-height="540" onClick="flipDevice(event)"><span>960 x 540</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen" data-width="800" data-height="480" onClick="flipDevice(event)"><span>800 x 480</span>
+        <div class="js-screen screen mobile" data-width="800" data-height="480" onClick="flipDevice(event)"><span>800 x 480</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen desktop" data-width="2880" data-height="1440" onClick="flipDevice(event)">
+        <div class="js-screen screen desktop" data-width="2880" data-height="1440" onClick="flipDevice(event)">
             <span>2880 x 1440</span>
             <small class="tooltip"></small>
         </div>
-        <div class="screen mobile" data-width="360" data-height="640" onClick="flipDevice(event)"><span>360 x 640</span>
+        <div class="js-screen screen mobile" data-width="360" data-height="640" onClick="flipDevice(event)"><span>360 x 640</span>
             <small class="tooltip">Samsung Galaxy S7/Edge</small>
         </div>
-        <div class="screen mobile" data-width="375" data-height="667" onClick="flipDevice(event)"><span>375 x 667</span>
+        <div class="js-screen screen mobile" data-width="375" data-height="667" onClick="flipDevice(event)"><span>375 x 667</span>
             <small class="tooltip">iPhone 6/7/8</small>
-        </div>
-        <div class="legend">
-            <span class="legend-data phone">mobile</span>
-            <span class="legend-data tablet">tablet</span>
-            <span class="legend-data desktop">desktop</span>
         </div>
     </div>
 
-    <div id="view3" class="screens-container"
+    <div id="view3" class="js-screens-container screens-container"
          data-source="https://mediag.com/news/popular-screen-resolutions-designing-for-all/" data-max-screen=1920
          data-scale=9>
-        <div class="screen mobile" data-width="375" data-height="812" onClick="flipDevice(event)"><span>375 x 812</span>
+        <div class="js-screen screen mobile" data-width="375" data-height="812" onClick="flipDevice(event)"><span>375 x 812</span>
             <small class="tooltip">iPhone X</small>
         </div>
-        <div class="screen mobile" data-width="414" data-height="736" onClick="flipDevice(event)"><span>414 x 736</span>
+        <div class="js-screen screen mobile" data-width="414" data-height="736" onClick="flipDevice(event)"><span>414 x 736</span>
             <small class="tooltip">iPhone 8Plus, 7Plus, 6Plus</small>
         </div>
-        <div class="screen mobile" data-width="375" data-height="667" onClick="flipDevice(event)"><span>375 x 667</span>
+        <div class="js-screen screen mobile" data-width="375" data-height="667" onClick="flipDevice(event)"><span>375 x 667</span>
             <small class="tooltip">iPhone 6/7/8</small>
         </div>
-        <div class="screen mobile" data-width="320" data-height="568" onClick="flipDevice(event)"><span>320 x 568</span>
+        <div class="js-screen screen mobile" data-width="320" data-height="568" onClick="flipDevice(event)"><span>320 x 568</span>
             <small class="tooltip">iPhone 5, iPod Touch</small>
         </div>
-        <div class="screen mobile" data-width="1366" data-height="1024" onClick="flipDevice(event)">
+        <div class="js-screen screen mobile" data-width="1366" data-height="1024" onClick="flipDevice(event)">
             <span>1366 x 1024</span>
             <small class="tooltip">iPad PRO</small>
         </div>
-        <div class="screen mobile" data-width="1024" data-height="768" onClick="flipDevice(event)">
+        <div class="js-screen screen mobile" data-width="1024" data-height="768" onClick="flipDevice(event)">
             <span>1024 x 768</span>
             <small class="tooltip">iPad Mini/Mini2, iPad Air 1/2, iPad III/IV</small>
         </div>
-        <div class="screen" data-width="411" data-height="731" onClick="flipDevice(event)"><span>411 x 731</span>
+        <div class="js-screen screen tablet" data-width="411" data-height="731" onClick="flipDevice(event)"><span>411 x 731</span>
             <small class="tooltip">Nexus 6P/5X, Pixel XL/2/2XL</small>
         </div>
-        <div class="screen" data-width="360" data-height="740" onClick="flipDevice(event)"><span>360 x 740</span>
+        <div class="js-screen screen tablet" data-width="360" data-height="740" onClick="flipDevice(event)"><span>360 x 740</span>
             <small class="tooltip">Galaxy S8/S8+/S9/S9+</small>
         </div>
-        <div class="screen" data-width="480" data-height="853" onClick="flipDevice(event)"><span>480 x 853</span>
+        <div class="js-screen screen tablet" data-width="480" data-height="853" onClick="flipDevice(event)"><span>480 x 853</span>
             <small class="tooltip">Galaxy Note 5, LG G5, One+ 3</small>
         </div>
-        <div class="screen" data-width="360" data-height="640" onClick="flipDevice(event)"><span>360 x 640</span>
+        <div class="js-screen screen tablet" data-width="360" data-height="640" onClick="flipDevice(event)"><span>360 x 640</span>
             <small class="tooltip">Samsung Galaxy S7/Edge</small>
         </div>
-        <div class="screen" data-width="960" data-height="600" onClick="flipDevice(event)"><span>960 x 600</span>
+        <div class="js-screen screen tablet" data-width="960" data-height="600" onClick="flipDevice(event)"><span>960 x 600</span>
             <small class="tooltip">Nexus 7 (2013)</small>
         </div>
-        <div class="screen" data-width="1024" data-height="768" onClick="flipDevice(event)"><span>1024 x 768</span>
+        <div class="js-screen screen tablet" data-width="1024" data-height="768" onClick="flipDevice(event)"><span>1024 x 768</span>
             <small class="tooltip">Nexus 9</small>
         </div>
-        <div class="screen" data-width="1280" data-height="800" onClick="flipDevice(event)"><span>1280 x 800</span>
+        <div class="js-screen screen tablet" data-width="1280" data-height="800" onClick="flipDevice(event)"><span>1280 x 800</span>
             <small class="tooltip">Galaxy Tab 10</small>
         </div>
-        <div class="screen" data-width="1280" data-height="850" onClick="flipDevice(event)"><span>1280 x 850</span>
+        <div class="js-screen screen tablet" data-width="1280" data-height="850" onClick="flipDevice(event)"><span>1280 x 850</span>
             <small class="tooltip">Chomebook Pixel</small>
-        </div>
-        <div class="legend">
-            <span class="legend-data phone">iOS</span>
-            <span class="legend-data tablet">android</span>
         </div>
     </div>
 
-    <div id="view4" class="screens-container"
+    <div id="view4" class="js-screens-container screens-container "
          data-source="https://www.grandviewresearch.com/industry-analysis/smart-tv-industry" data-min-screen=1200
          data-max-screen=10000 data-scale=12>
-        <div class="screen" data-width="1920" data-height="1080" onClick="flipDevice(event)"><span>1920 x 1080</span>
+        <div class="js-screen screen desktop" data-width="1920" data-height="1080" onClick="flipDevice(event)"><span>1920 x 1080</span>
             <small class="tooltip">36.3%</small>
         </div>
-        <div class="screen" data-width="0" data-height="0" onClick="flipDevice(event)"><span></span>
+        <div class="js-screen screen desktop" data-width="0" data-height="0" onClick="flipDevice(event)"><span></span>
             <small class="tooltip">2.3%</small>
         </div>
-        <div class="screen" data-width="1280" data-height="720" onClick="flipDevice(event)"><span>1280 x 720</span>
+        <div class="js-screen screen desktop" data-width="1280" data-height="720" onClick="flipDevice(event)"><span>1280 x 720</span>
             <small class="tooltip">33%</small>
         </div>
-        <div class="screen" data-width="0" data-height="0" onClick="flipDevice(event)"><span></span>
+        <div class="js-screen screen desktop" data-width="0" data-height="0" onClick="flipDevice(event)"><span></span>
             <small class="tooltip">2.3%</small>
         </div>
-        <div class="screen" data-width="3840" data-height="2160" onClick="flipDevice(event)"><span>3840 x 2160</span>
+        <div class="js-screen screen desktop" data-width="3840" data-height="2160" onClick="flipDevice(event)"><span>3840 x 2160</span>
             <small class="tooltip">28.4%%</small>
         </div>
-        <div class="screen" data-width="0" data-height="0" onClick="flipDevice(event)"><span></span>
+        <div class="js-screen screen desktop" data-width="0" data-height="0" onClick="flipDevice(event)"><span></span>
             <small class="tooltip">2.3%</small>
         </div>
-        <div class="screen" data-width="0" data-heght="0" onClick="flipDevice(event)"><span></span>
+        <div class="js-screen screen desktop" data-width="0" data-heght="0" onClick="flipDevice(event)"><span></span>
             <small class="tooltip">2.3%</small>
         </div>
-        <div class="screen" data-width="7680" data-height="4320" onClick="flipDevice(event)"><span>7680 x 4320</span>
+        <div class="js-screen screen desktop" data-width="7680" data-height="4320" onClick="flipDevice(event)"><span>7680 x 4320</span>
             <small class="tooltip">2.3%</small>
-        </div>
-        <div class="legend">
-            <span class="legend-data tablet">Smart TV</span>
         </div>
     </div>
 
     <footer>
         <div id="view-selector" class="footer-item">
-            <div class="button selected" onClick="changeView(event, 1)">Global</div>
-            <div class="button" onClick="changeView(event, 2)">Global 2</div>
-            <div class="button" onClick="changeView(event, 3)">iOS vs Android</div>
-            <div class="button" onClick="changeView(event, 4)">Smart TVs</div>
-        </div>
-        <ul class="footer-item float panel">
-            <li class="float ratio-1-5 panel-item">
-                <input id="enableUsedBkp" class="hide" type="checkbox" name="enableUsedBkp" value="enable"
-                       onchange="enableUsedBkp(event)">
-                <label class="panel-label float" for="enableUsedBkp">used breakpoints</label>
-            </li>
-            <li class="float ratio-1-5 panel-item">
-                <input id="toggleBreaks" class="hide" type="checkbox" name="toggleBreaks" value="enable"
-                       onchange="toggleBreaks(event)">
-                <input id="toggleSet3" class="hide" type="checkbox" name="toggleBreaks" value="3"
-                       onchange="toggleSet(event)"/>
-                <input id="toggleSet1" class="hide" type="checkbox" name="toggleBreaks" value="1"
-                       onchange="toggleSet(event)"/>
-                <input id="toggleSet2" class="hide" type="checkbox" name="toggleBreaks" value="2"
-                       onchange="toggleSet(event)"/>
-                <label class="panel-label float" for="toggleBreaks">EXP-311 breakpoints</label>
-                <div>
-                    <label class="panel-label" for="toggleSet1">locked</label>
-                </div>
-                <div>
-                    <label class="panel-label" for="toggleSet2">mobile first</label>
-                </div>
-                <div>
-                    <label class="panel-label" for="toggleSet3">mobile last</label>
-                </div>
-            </li>
-            <li class="float ratio-1-5 panel-item">
+            <div class="panel">
+                <div class="button js-screens-controls selected" data-target=0 onClick="changeView(event, 1)">Global</div>
+                <div class="button js-screens-controls" data-target=1 onClick="changeView(event, 2)">Global 2</div>
+                <div class="button js-screens-controls" data-target=2 onClick="changeView(event, 3)">iOS vs Android</div>
+                <div class="button js-screens-controls" data-target=3 onClick="changeView(event, 4)">Smart TVs</div>
+            </div>
 
-            </li>
-            <li class="float ratio-1-5 panel-item">
+            <div class="legend view1">
+                <span class="legend-data phone">mobile</span>
+                <span class="legend-data tablet">tablet</span>
+                <span class="legend-data desktop">desktop</span>
+            </div>
+            <div class="legend view2">
+                <span class="legend-data phone">mobile</span>
+                <span class="legend-data tablet">tablet</span>
+                <span class="legend-data desktop">desktop</span>
+            </div>
+            <div class="legend view3">
+                <span class="legend-data phone">iOS</span>
+                <span class="legend-data tablet">android</span>
+            </div>
+            <div class="legend view4">
+                <span class="legend-data desktop">Smart TV</span>
+            </div>
+        </div>
+
+        <div class="footer-item panel">
+            <div class="panel-item enableUsedBkp">
+                <label class="button float alt" for="enableUsedBkp">used breakpoints</label>
+            </div>
+            <div class="panel-item toggleBreaks">
+                <label class="button toggleSets hide" for="toggleBreaks">EXP-311 breakpoints</label>
+                <label class="toggle-label toggleSet1" for="toggleSet1">🔒</label>
+                <label class="toggle-label toggleSet2" for="toggleSet2">📱</label>
+                <label class="toggle-label toggleSet3" for="toggleSet3">🖥</label>
+            </div>
+            <div class="panel-item">
                 <label class="panel-label" for="maxScreen">Set max resolution</label>
                 <input id="maxScreen" class="panel-value" type="number" step="200" name="maxScreen" value="2400"
                        placeholder="maxScreen" onchange="setMaxResolution(event)">
-            </li>
-            <li class="float ratio-1-5 panel-item">
+            </div>
+            <div class="panel-item">
                 <label class="panel-label" for="ruleSteps">Set rule intervals</label>
                 <input id="ruleSteps" class="panel-value" type="number" step="1" name="ruleSteps" value="10"
                        placeholder="rule step" onchange="setRuleInterval(event)">
-            </li>
-            <li class="float ratio-2-5 panel-item">
-                <span>source:<br> <a href="" id="data-source" class="nowrap" target="_blank"></a></span>
-            </li>
-        </ul>
+            </div>
+            <div class="panel-item">
+                <a href="" id="data-source" class="source-link" target="_blank">source</a>
+            </div>
+        </div>
     </footer>
 </main>
 <script type="text/javascript" src="scripts/script.js">
