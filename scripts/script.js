@@ -107,7 +107,7 @@ var drawRulers = function () {
   drawBreakpoints(breakpointsUsed)
   drawBreakpoints(breakpoints)
   rulerStyles.innerHTML = styles
-  styles = ""
+  styles = ''
 }
 
 var drawSigns = function () {
